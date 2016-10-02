@@ -1,0 +1,42 @@
+<header>
+  <nav>
+    <div class="content">
+      <div class="row">
+        <a href="#" class="logo"><%= image_tag 'logo.svg' %></a>
+        <div class="profile">
+          <div class="user">
+            <span class="name"><%= current_user.name %></span>
+            <span class="handle">@<%= current_user.nickname %></span>
+          </div>
+          <img src="<%= current_user.image %>" />
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<section class="people">
+  <div class="content">
+    <ul>
+      <li class="row">
+        <div class="title">UI Design</div>
+        <div class="profile">
+          <div class="user">
+            <span class="name">Jeff Hilnbrand</span>
+            <span class="handle">@jhilmd</span>
+          </div>
+          <img src="<%= current_user.image %>" />
+        </div>
+      </li>
+      <li class="row">
+        <div class="title">UI Design</div>
+        <div class="profile">
+          <div class="user">
+            <span class="name">Jeff Hilnbrand</span>
+            <span class="handle">@jhilmd</span>
+          </div>
+          <img src="<%= current_user.image %>" />
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
