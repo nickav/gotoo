@@ -67,7 +67,7 @@ gulp.task('sass:optimized', function() {
 
 gulp.task('sass', ['sass:lint', 'sass:build']);
 
-gulp.task('webpack:build', function(callback) {
+gulp.task('js:build', function(callback) {
   // modify some webpack config options
   var myConfig = Object.create(webpackConfig);
   myConfig.plugins = myConfig.plugins.concat(
@@ -95,7 +95,7 @@ gulp.task('js:lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('js', ['js:lint', 'webpack:build']);
+gulp.task('js', ['js:lint', 'js:build']);
 
 gulp.task('images', function() {
   return gulp.src('src/img/**/*')
