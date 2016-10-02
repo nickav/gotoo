@@ -1,57 +1,45 @@
+@font-face {
+  font-family: 'Calibre';
+  src: font-url('CalibreWeb-Regular.eot'); // IE9 Compat Modes
+  src: font-url('CalibreWeb-Regular.eot?#iefix') format('embedded-opentype'), // IE6-IE8
+       font-url('CalibreWeb-Regular.woff') format('woff'); // Pretty Modern Browsers
+}
+
 // Font weights
 $extra-bold: 800;
 $bold: 700;
-$medium: 500;
 $regular: 400;
-$light: 300;
+$thin: 300;
 
-$sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+// Fonts
+$sans: 'Calibre', Helvetica, Arial, sans-serif;
 
-h1, %h1 {
-  font-size: 2.25rem;
-  font-weight: $light;
-  letter-spacing: 0.5px;
-  margin-bottom: 2.5rem;
+h1, %h1, .h1 {
+  font-size: 2.5rem;
 }
 
 h2, %h2 {
-  font-size: 1rem;
-  font-weight: $medium;
-  letter-spacing: 4px;
-  line-height: 1;
-  text-align: center;
-  text-transform: uppercase;
+  font-size: 2rem;
 }
+
 
 h3, %h3 {
   font-size: 1.5rem;
-  letter-spacing: 0.5px;
+  color: $light-gray;
 }
 
 h4, %h4 {
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-}
-
-h5, %h5 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-}
-
-p, .p {
   font-size: 1rem;
 }
 
-strong {
-  font-weight: $medium;
-}
+p, %p {
+  font-size: 1rem;
 
-@media screen and (max-width: $phone-landscape-max) {
-  h1, %h1 {
-    font-size: 1.75rem;
+  &.large {
+    @extend %h3;
   }
 
-  h4, %h4 {
-    font-size: 1.5rem;
+  cite {
+    font-style: italic;
   }
 }

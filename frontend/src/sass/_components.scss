@@ -1,0 +1,33 @@
+.btn, button {
+  max-width: 34rem;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1.75rem 2rem;
+  line-height: 0;
+  height: 100%;
+  color: $white;
+  border-radius: 100px;
+  background-color: $purple;
+  transition: all .2s;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+
+  &:hover {
+    color: $white;
+    background-color: lighten($purple, 10%);
+  }
+
+  & > * {
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .icon {
+    padding-right: 0.5rem;
+  }
+}
+
+.icon {
+  display: inline-block;
+}

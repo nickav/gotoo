@@ -1,12 +1,18 @@
 @media screen and (min-width: $xxl-desktop-min) {
   html, body {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
 @media screen and (max-width: $xl-desktop-max) {
   html, body {
-    font-size: 18px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: $lg-desktop-max) {
+  html, body {
+    font-size: 16px;
   }
 }
 
@@ -18,40 +24,33 @@
 
 @media screen and (max-width: $tablet-landscape-max) {
   html, body {
-    font-size: 15px;
-  }
-}
-
-@media screen and (min-width: $tablet-portrait-min) {
-  .mobile-only {
-    display: none;
-  }
-}
-
-@media screen and (max-width: $phone-landscape-max) {
-  html, body {
     font-size: 14px;
   }
-
-  .hide-mobile {
-    display: none;
-  }
 }
 
-@media screen and (max-width: $phone-portrait-max) {
+@media screen and (max-width: $tablet-portrait-max) {
   html, body {
     font-size: 12px;
   }
 }
 
-@media screen and (max-width: $flip-phone-max) {
+@media screen and (max-width: $phone-landscape-max) {
   html, body {
-    font-size: 7px;
+    font-size: 12px;
   }
 }
-
+@media screen and (max-width: $phone-portrait-max) {
+  html, body {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: $flip-phone-max) {
+  html, body {
+    font-size: 8px;
+  }
+}
 @media screen and (max-width: $super-ultra-tiny-flip-phone-max) {
   html, body {
-    font-size: 5px;
+    font-size: 6px;
   }
 }
