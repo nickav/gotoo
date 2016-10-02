@@ -1,9 +1,11 @@
 import React from 'react';
+import WelcomePage from './WelcomePage';
+import ProfilePage from './ProfilePage';
 
 export default class App extends React.Component {
   render() {
     return (
-      <h1>Hello, world!</h1>
+      <ProfilePage />
     );
   }
 }
