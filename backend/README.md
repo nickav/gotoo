@@ -1,13 +1,34 @@
-# README
+# Goto Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
 
-Things you may want to cover:
+Install rbenv:
+```bash
+  brew install rbenv
+  rbenv install 2.2.2
+  rbenv rehash
+```
 
-* Ruby version
+To verify which version of ruby you're running, run:
+`ruby -v`
+Make sure it's `ruby 2.2.2`
 
-* System dependencies
+Install ruby gems:
+```
+  gem install bundle
+  bundle install
+```
+
+Install browser sync:
+`npm install -g browser-sync`
+
+## Run
+
+Start the rails server:
+`rails s`
+
+Start browser sync (for frontend):
+`npm start`
 
 * Configuration
 

@@ -7,7 +7,7 @@ export default class Account extends React.Component {
       <div className="profile">
         <div className="user">
           <span className="name">Jeff Hilnbrand</span>
-          <EditableTextField className="handle" text="@jhilmd" />
+          <EditableTextField text="@jhilmd" />
         </div>
         <img src="" />
       </div>

@@ -3,7 +3,7 @@ import React from 'react';
 export default class WelcomePage extends React.Component {
   render() {
     return (
-      <div className="welcome">
+      <div className="welcome-page">
         <div className="hero content">
           <h1 className="logo">
             <img src="/img/logo.svg" alt="Goto" />
