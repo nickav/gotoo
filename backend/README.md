@@ -17,6 +17,7 @@ Install ruby gems:
 ```
   gem install bundle
   bundle install
+  rake db:migrate
 ```
 
 Install browser sync:
