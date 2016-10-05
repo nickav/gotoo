@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :gotos
+
   devise :registerable,
          :recoverable,
          :rememberable,
          :trackable,
-         :omniauthable, :omniauth_providers => [:twitter]
+         :omniauthable,
+         :omniauth_providers => [:twitter]
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -21,6 +22,12 @@ class User < ActiveRecord::Base
       user.name = auth.info.name
       user.nickname = auth.info.nickname
       user.image = auth.info.image
+    end
+  end
+
+  def as_json(options = {})
+    super(options).tap do |json|
+      json[:gotos] = gotos
     end
   end
 end

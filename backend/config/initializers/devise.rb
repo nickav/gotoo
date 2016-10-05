@@ -6,13 +6,15 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '21230d60847c60a8fc41e4454d2e6b9a53e02d0ea7b2399f09ec8c7e91ea33dd351bb58159acac6f28ce940f6b45a8fc440ddbe0873d2b2d45715e63ebf69c1c'
+  # config.secret_key = '6dd28269673c524d839e188e20c1c930415a4884c76b14bdc84339e519035f6f685afb1a9aa744af222598f1e886338bf22d90650f3af82008e297604b5b18b1'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+
+  config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET']
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -102,7 +104,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '14fe46740a0f45dfeeb9d982e5cab2250e783793750b1cca421b1f101ae0797d73351abe5eaa1ca7b284769a08f863232c1e2428d8adfc95f51566a3df47ec52'
+  # config.pepper = '77ffa91443133dc954f39e4cc43e06737249e3596a538e0c3a36ca046b989c21b8efb16c70c56b633acae4e5cbcc1d042e0cf470a26b24f037a20abcbd592427'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
