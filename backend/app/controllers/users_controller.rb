@@ -11,17 +11,15 @@ class UsersController < ApplicationController
   end
 
   def update
+    # TODO
   end
 
   def destroy
+    # TODO
   end
 
   private
   def find_user_by_nickname
-    @user = User.where(nickname: params[:nickname])
-  end
-
-  def current_user_can_edit!
-    raise ActionController::RoutingError.new('Not Found') unless authenticate_user!.nickname == params[:nickname]
+    @user = User.find_by(nickname: params[:nickname])
   end
 end
