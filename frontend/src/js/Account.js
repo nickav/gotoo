@@ -3,13 +3,14 @@ import EditableTextField from './EditableTextField';
 
 export default class Account extends React.Component {
   render() {
+    var handle = "jhilmd";
     return (
       <div className="profile">
         <div className="user">
           <span className="name">Jeff Hilnbrand</span>
-          <EditableTextField text="@jhilmd" />
+          <EditableTextField text={`@${handle}`} />
         </div>
-        <img src="https://pbs.twimg.com/profile_images/716751511229870080/6hj0gDAM_400x400.jpg" />
+        <img src={`https://twitter.com/${handle}/profile_image?size=normal`} />
       </div>
     );
   }
