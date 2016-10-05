@@ -12,7 +12,7 @@ export default class ProfilePage extends React.Component {
               <div className="row">
                 <a href="#" className="logo"><img src="/img/logo.svg" alt="Logo"/></a>
                 <a href="http://twitter.com/jhilmd" target="_blank">
-                  <Account />
+                <Account />
                 </a>
               </div>
             </div>

@@ -1,6 +1,5 @@
 
 // Font weights
-$extra-bold: 800;
 $bold: 700;
 $regular: 400;
 $thin: 300;
@@ -20,10 +19,6 @@ h2, %h2 {
 h3, %h3 {
   font-size: 1.5rem;
   color: $light-gray;
-}
-
-h4, %h4 {
-  font-size: 1rem;
 }
 
 p, %p {

@@ -33,3 +33,8 @@ img {
     display: block;
   }
 }
+
+::selection {
+  background: $purple;
+  color: $white;
+}

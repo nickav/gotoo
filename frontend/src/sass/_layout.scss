@@ -21,6 +21,10 @@ $transition-duration: .3s;
   text-align: center;
 }
 
+.logo {
+  user-select: none;
+}
+
 // home page
 .welcome-page {
   display: flex;
