@@ -60,17 +60,40 @@ header {
   padding-bottom: 4rem;
 }
 
+.row-link {
+
+  &:hover {
+    .craft {
+      color: $dark-gray;
+    }
+    .user {
+      color: $purple;
+      .name {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      .handle {
+        top: 0%;
+        opacity: 1;
+      }
+    }
+    .profile img {
+      transform: scale(1.25);
+    }
+
+  }
+}
+
 .row {
   font-size: 1.5rem;
   padding: 1.5rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all .2s;
+}
 
-  &:hover {
-    color: $purple;
-  }
-
+.craft {
   transition: all .2s;
 }
 
@@ -88,6 +111,7 @@ header {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
+    transition: all .2s;
   }
 }
 
@@ -104,18 +128,12 @@ header {
     top: 100%;
     right: 0;
     position: absolute;
+    opacity: 0;
   }
 
   .name {
     transform: translateY(0%);
+    opacity: 1;
   }
 
-  &:hover {
-    .name {
-      transform: translateY(-100%);
-    }
-    .handle {
-      top: 0%;
-    }
-  }
 }

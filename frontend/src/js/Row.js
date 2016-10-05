@@ -5,10 +5,12 @@ import Account from './Account';
 class Row extends React.Component {
   render() {
     return (
-      <li className="row">
-        <EditableTextField className="title" text="UI Design" />
-        <Account />
-      </li>
+      <a href="http://twitter.com/jhilmd" target="_blank" className="row-link">
+        <li className="row">
+          <EditableTextField className="craft" text="UI Design" />
+          <Account />
+        </li>
+      </a>
     );
   }
 }

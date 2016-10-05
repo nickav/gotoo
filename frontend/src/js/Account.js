@@ -9,7 +9,7 @@ export default class Account extends React.Component {
           <span className="name">Jeff Hilnbrand</span>
           <EditableTextField text="@jhilmd" />
         </div>
-        <img src="" />
+        <img src="https://pbs.twimg.com/profile_images/716751511229870080/6hj0gDAM_400x400.jpg" />
       </div>
     );
   }
