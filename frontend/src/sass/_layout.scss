@@ -1,5 +1,7 @@
 $content-width: 39.75rem;
 
+$transition-duration: .3s;
+
 .content {
   @include clearfix;
   margin: 0 auto;
@@ -12,11 +14,6 @@ $content-width: 39.75rem;
   .content {
     padding: 0;
     width: 100%;
-  }
-
-  header, section, footer {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
   }
 }
 
@@ -56,11 +53,22 @@ $content-width: 39.75rem;
 }
 
 header {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  margin: 6rem 0;
+
+  .profile {
+    &:hover {
+      color: $purple;
+      img {
+        transform: scale(1.25);
+      }
+    }
+  }
+
 }
 
 .row-link {
+  display: block;
+  margin-bottom: 1rem;
 
   &:hover {
     .craft {
@@ -90,11 +98,11 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all .2s;
+  transition: all $transition-duration;
 }
 
 .craft {
-  transition: all .2s;
+  transition: all $transition-duration;
 }
 
 .profile {
@@ -111,7 +119,7 @@ header {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-    transition: all .2s;
+    transition: all $transition-duration ease;
   }
 }
 
@@ -120,7 +128,7 @@ header {
   overflow: hidden;
 
   .handle, .name {
-    transition: all .2s;
+    transition: all $transition-duration ease;
     display: inline-block;
   }
 
