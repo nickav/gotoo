@@ -1,5 +1,5 @@
 .btn, button {
-  max-width: 39rem;
+  max-width: 100%;
   display: block;
   margin: 0 auto;
   text-align: center;
@@ -7,7 +7,7 @@
   line-height: 0;
   height: 100%;
   color: $white;
-  border-radius: 100px;
+  border-radius: 100%;
   background-color: $purple;
   transition: all .2s;
   font-size: 1.5rem;
