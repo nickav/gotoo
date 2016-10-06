@@ -60,7 +60,7 @@ header {
   margin: 6rem 0;
 
   .profile {
-    &:hover {
+    &:hover, .editing {
       color: $purple;
       img {
         transform: scale(1.25);
@@ -74,7 +74,7 @@ header {
   display: block;
   margin-bottom: 1rem;
 
-  &:hover {
+  &:hover, .editing {
     .craft {
       color: $black;
     }

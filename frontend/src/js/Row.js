@@ -5,10 +5,10 @@ import Account from './Account';
 class Row extends React.Component {
   render() {
     return (
-      <a href="http://twitter.com/jhilmd" target="_blank" className="row-link">
+      <a target="_blank" className="row-link">
         <li className="row">
-          <EditableTextField className="craft" text="UI Design" />
-          <Account />
+          <EditableTextField className="craft" text={this.props.skill} />
+          <Account {...this.props} />
         </li>
       </a>
     );
@@ -18,10 +18,14 @@ class Row extends React.Component {
 export default class RowList extends React.Component {
 
   render() {
-    var rowList = [1,2,3];
+    var rowList = [
+      {skill: "UI Design", handle: "jhilmd", name: "JAAAAFFFFF Hilnbrand", image: "https://twitter.com/jhilmd/profile_image?size=normal"},
+      {skill: "Apple Picking", handle: "jhilmd", name: "JAAAAFFFFF Hilnbrand", image: "https://twitter.com/jhilmd/profile_image?size=normal"},
+      {skill: "Piano Tuning", handle: "jhilmd", name: "JAAAAFFFFF Hilnbrand", image: "https://twitter.com/jhilmd/profile_image?size=normal"},
+    ];
     var rowNodes = rowList.map(function(e) {
       return (
-        <Row/>
+        <Row {...e} />
       );
     });
     return (

@@ -7,18 +7,18 @@ export default class ProfilePage extends React.Component {
     return (
       <div className="profile-page">
         <header>
-          <nav>
-            <div className="content">
-              <div className="row">
-                <a href="#" className="logo"><img src="/img/logo.svg" alt="Logo"/></a>
-                <a href="http://twitter.com/jhilmd" target="_blank">
-                <Account />
-                </a>
-              </div>
+          <nav className="content">
+            <div className="row">
+              <a href="#" className="logo">
+                <img src="/img/logo.svg" alt="Logo"/>
+              </a>
+              <Account name="Jeff Hilnbrand" handle="jhilmd" image="https://twitter.com/jhilmd/profile_image?size=normal" />
             </div>
           </nav>
         </header>
+
         <RowList />
+
       </div>
     );
   }
