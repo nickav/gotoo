@@ -1,5 +1,4 @@
 import React from 'react';
-import EditableTextField from './EditableTextField';
 import Account from './Account';
 
 class Row extends React.Component {
@@ -21,8 +20,8 @@ class Row extends React.Component {
   }
 
   render() {
-    let className = 'row ';
-    if (this.state.focus) className += 'editing';
+    let className = 'row';
+    if (this.state.focus || this.props.skill.length == 0) className += ' editing';
     return (
       <a target="_blank" className="row-link">
         <li
@@ -30,7 +29,12 @@ class Row extends React.Component {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
         >
-          <EditableTextField className="craft" text={this.props.skill} />
+          <input type="text"
+            ref="skill"
+            className="craft"
+            placeholder="Write a skill..."
+            defaultValue={this.props.skill}
+          />
           <Account {...this.props} />
         </li>
       </a>
@@ -45,6 +49,7 @@ export default class RowList extends React.Component {
       {skill: "UI Design", handle: "jhilmd", name: "JAAAAFFFFF Hilnbrand", image: "https://twitter.com/jhilmd/profile_image?size=normal"},
       {skill: "Apple Picking", handle: "jhilmd", name: "JAAAAFFFFF Hilnbrand", image: "https://twitter.com/jhilmd/profile_image?size=normal"},
       {skill: "Piano Tuning", handle: "jhilmd", name: "JAAAAFFFFF Hilnbrand", image: "https://twitter.com/jhilmd/profile_image?size=normal"},
+      {skill: "", handle: "", name: "", image: ""}
     ];
     var rowNodes = rowList.map(function(e) {
       return (
