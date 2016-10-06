@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user
+    render json: @user.as_json.tap { |json| json[:gotos] = @user.gotos }
   end
 
   def update
@@ -21,5 +21,6 @@ class UsersController < ApplicationController
   private
   def find_user_by_nickname
     @user = User.find_by(nickname: params[:nickname])
+    raise ActionController::RoutingError.new('Not found') unless @user
   end
 end

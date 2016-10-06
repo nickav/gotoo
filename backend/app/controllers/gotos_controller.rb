@@ -3,6 +3,8 @@ class GotosController < ApplicationController
   before_action :find_goto, except: [:index]
   before_action :current_user_can_edit!, only: [:create, :update, :destroy]
 
+  before_save :fetch_twitter_data
+
   def index
     render json: @user.gotos
   end
@@ -32,5 +34,11 @@ class GotosController < ApplicationController
 
   def goto_params
     params.require(:nickname, :craft).permit(:image, :name)
+  end
+
+  def fetch_twitter_data
+    twitter_user = $twitter.user(params[:nickname])
+    self.name = twitter_user.name
+    self.image = twitter_user.profile_image_url.to_s
   end
 end

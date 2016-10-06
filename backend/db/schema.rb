@@ -14,10 +14,10 @@ ActiveRecord::Schema.define(version: 20161005051307) do
 
   create_table "gotos", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "for"
+    t.string   "craft"
+    t.string   "image"
     t.string   "name"
     t.string   "nickname"
-    t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_gotos_on_user_id"
