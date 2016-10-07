@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   def as_json(options={})
     super(options).tap do |json|
-      json[:profile_url] = "/users/#{nickname}"
+      json[:profile_url] = "/#{nickname}"
     end
   end
 end
