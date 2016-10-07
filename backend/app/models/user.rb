@@ -24,4 +24,10 @@ class User < ActiveRecord::Base
       user.image = auth.info.image
     end
   end
+
+  def as_json(options={})
+    super(options).tap do |json|
+      json[:profile_url] = "/users/#{nickname}"
+    end
+  end
 end
