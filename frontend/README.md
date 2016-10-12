@@ -64,7 +64,7 @@ Builds the site into the `dist` directory.  This includes:
 
 This is used for distributing an optimized version of the site (for deployment).  It includes everything from `gulp build` as well as:
 - SCSS minification
-- CSS / JS inline-sourcing 
+- CSS / JS inline-sourcing
 
 ### `gulp watch`
 

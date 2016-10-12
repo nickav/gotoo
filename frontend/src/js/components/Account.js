@@ -11,6 +11,7 @@ export default class Account extends React.Component {
             type="text"
             placeholder="Add a Twitter handle..."
             defaultValue={this.props.text}
+            tabIndex={this.props.tabindex}
           />
         </div>
         <img src={this.props.image} />

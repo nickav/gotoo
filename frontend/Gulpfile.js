@@ -1,38 +1,26 @@
 'use strict';
 
+var fs = require('fs');
+
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
-var cache = require('gulp-cached');
 var cssnano = require('gulp-cssnano');
-var fs = require('fs');
 var gulp = require('gulp');
 var handlebars = require('gulp-compile-handlebars');
 var htmlmin = require('gulp-htmlmin');
 var imagemin = require('gulp-imagemin');
 var inlinesource = require('gulp-inline-source');
-var jscs = require('gulp-jscs');
-var jshint = require('gulp-jshint');
-var layouts = require('handlebars-layouts');
 var plumber = require('gulp-plumber');
-var reload = browserSync.reload;
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var sass = require('gulp-sass');
 var scsslint = require('gulp-scss-lint');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var yaml = require('js-yaml');
 var rimraf = require('rimraf');
 var runSequence = require('run-sequence');
-var path = require('path');
 var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-var webpackConfig = require('./webpack.config');
-var bundler = webpack(webpackConfig);
 
-
-handlebars.Handlebars.registerHelper(layouts(handlebars.Handlebars));
 
 gulp.task('sass:lint', function() {
   gulp.src('./src/sass/*.scss')
@@ -68,34 +56,20 @@ gulp.task('sass:optimized', function() {
 gulp.task('sass', ['sass:lint', 'sass:build']);
 
 gulp.task('js:build', function(callback) {
-  // modify some webpack config options
-  var myConfig = Object.create(webpackConfig);
-  myConfig.plugins = myConfig.plugins.concat(
-    new webpack.DefinePlugin({
-      "process.env": {
-        // This has effect on the react lib size
-        "NODE_ENV": JSON.stringify("production")
-      }
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
-  );
-
-  // run webpack
-  webpack(myConfig, function(err, stats) {
+  const webpackConfig = require('./webpack.config');
+  webpack(Object.create(webpackConfig), function(err, stats) {
     callback();
   });
 });
 
-gulp.task('js:lint', function() {
-  return gulp.src(['./src/js/**/*.js', '!./src/js/lib/**/*.js', 'Gulpfile.js'])
-    .pipe(plumber())
-      .pipe(jscs())
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
+gulp.task('js:optimized', function(callback) {
+  const webpackConfig = require('./webpack.production.config');
+  webpack(Object.create(webpackConfig), function(err, stats) {
+    callback();
+  });
 });
 
-gulp.task('js', ['js:lint', 'js:build']);
+gulp.task('js', ['js:build']);
 
 gulp.task('images', function() {
   return gulp.src('src/img/**/*')
@@ -123,10 +97,9 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('templates', function() {
-  var templateData = yaml.safeLoad(fs.readFileSync('data.yml', 'utf-8'));
+  var templateData = JSON.parse(fs.readFileSync('./config.json', 'utf-8'));
   var options = {
     ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false
-    batch: ['./src/partials/'],
     helpers: {
       capitals: function(str) {
         return str.toUpperCase();
@@ -134,12 +107,9 @@ gulp.task('templates', function() {
     },
   };
 
-  return gulp.src('./src/templates/**/*.hbs')
+  return gulp.src('./index.html')
     .pipe(plumber())
     .pipe(handlebars(templateData, options))
-    .pipe(rename(function(path) {
-      path.extname = '.html';
-    }))
     .pipe(gulp.dest('dist'));
 });
 
@@ -159,6 +129,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('watch', function() {
+  const reload = browserSync.reload;
   gulp.watch(['./src/templates/**/*.hbs', './src/partials/**/*.hbs'], ['templates'], reload);
   gulp.watch('./src/sass/**/*.scss', ['sass'], reload);
   gulp.watch('./src/img/**/*', ['images'], reload);
@@ -171,7 +142,7 @@ gulp.task('build', function (cb) {
 
 gulp.task('build:optimized', function(cb) {
   return runSequence('clean',
-    ['sass:optimized', 'images:optimized', 'fonts', 'js', 'templates:optimized'],
+    ['sass:optimized', 'images:optimized', 'fonts', 'js:optimized', 'templates:optimized'],
     cb);
 });
 
@@ -187,30 +158,7 @@ gulp.task('serve', ['build'], function() {
     },
     server: {
       baseDir: './dist',
-      middleware: [
-        webpackDevMiddleware(bundler, {
-          // IMPORTANT: dev middleware can't access config, so we should
-          // provide publicPath by ourselves
-          publicPath: webpackConfig.output.publicPath,
-
-          // pretty colored output
-          stats: { colors: true }
-
-          // for other settings see
-          // http://webpack.github.io/docs/webpack-dev-middleware.html
-        }),
-
-        // bundler should be the same as above
-        webpackHotMiddleware(bundler)
-      ]
     },
-
-    // no need to watch '*.js' here, webpack will take care of it for us,
-    // including full page reloads if HMR won't work
-    files: [
-      './dist/css/*.css',
-      './dist/*.html'
-    ]
   });
 
   // add browserSync.reload to the tasks array to make

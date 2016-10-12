@@ -2,6 +2,13 @@ class UsersController < ApplicationController
   before_action :find_user_by_nickname, only: [:show, :update, :destroy]
   before_action :current_user_can_edit!, only: [:update, :destroy]
 
+  def home
+    render json: {
+      current_user: current_user,
+      twitter_omniauth_url: user_twitter_omniauth_authorize_url,
+    }
+  end
+
   def index
     render json: { users: User.all }
   end
