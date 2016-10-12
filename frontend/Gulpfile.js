@@ -165,6 +165,6 @@ gulp.task('serve', ['build'], function() {
   gulp.start(['watch']);
 });
 
-gulp.task('webpack', function() {
+gulp.task('webpack', ['build'], function() {
   require('./webpack.server');
 });

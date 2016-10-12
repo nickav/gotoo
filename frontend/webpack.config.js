@@ -6,7 +6,7 @@ var destPath = path.join(__dirname, 'dist', 'js');
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:3001/',
     'webpack/hot/only-dev-server',
     './src/js/index'
   ],

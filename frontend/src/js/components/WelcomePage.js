@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router';
 
 export default class WelcomePage extends React.Component {
+  componentDidMount() {
+    fetch('/api').then((resp) => resp.json()).then((json) => {
+      console.log('json', json);
+      this.setState(json);
+    });
+  }
   render() {
     return (
       <div className="welcome-page">

@@ -9,11 +9,17 @@ new WebpackDevServer(webpack(config), {
   hot: true,
   historyApiFallback: true,
   stats: { colors: true, errorDetails: true },
-}).listen(3000, 'localhost', function (err, result) {
+  proxy: {
+    '/api': {
+      target: 'http://localhost:3000/',
+      secure: false
+    }
+  }
+}).listen(3001, 'localhost', function (err, result) {
   if (err) {
     return console.log(err);
   }
 
-  console.log('Listening on http://localhost:3000/');
-  spawn('open', ['http://localhost:3000/']);
+  console.log('Listening on http://localhost:3001/');
+  spawn('open', ['http://localhost:3001/']);
 });
