@@ -24,6 +24,7 @@ module.exports = {
     loaders: [{
       test: /\.js$/,
       loaders: ['babel'],
+      exclude: /(node_modules|bower_components)/,
       include: srcPath
     }]
   }

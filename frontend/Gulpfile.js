@@ -130,10 +130,9 @@ gulp.task('clean', function(cb) {
 
 gulp.task('watch', function() {
   const reload = browserSync.reload;
-  gulp.watch(['./src/templates/**/*.hbs', './src/partials/**/*.hbs'], ['templates'], reload);
   gulp.watch('./src/sass/**/*.scss', ['sass'], reload);
   gulp.watch('./src/img/**/*', ['images'], reload);
-  gulp.watch(['./src/js/**/*.js', 'Gulpfile.js'], ['js'], reload);
+  gulp.watch(['./dist/**/*.js', 'Gulpfile.js'], ['js'], reload);
 });
 
 gulp.task('build', function (cb) {
@@ -164,4 +163,8 @@ gulp.task('serve', ['build'], function() {
   // add browserSync.reload to the tasks array to make
   // all browsers reload after tasks are complete.
   gulp.start(['watch']);
+});
+
+gulp.task('webpack', function() {
+  require('./webpack.server');
 });

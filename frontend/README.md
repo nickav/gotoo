@@ -3,14 +3,15 @@ Project Template
 
 #### _Because web development doesn't need to be a pain._
 
-The [Minimill](https://minimill.co) project template is the best way to build static sites fast.  With one command, build a static page using [Gulp][gulp], [Handlebars.js][handlebars], and [SCSS][scss].
+The [Minimill](https://minimill.co) project template is the best way to build static sites fast.  With one command, build a static page using [Gulp][gulp], [React][react], and [SCSS][scss].
 
 _Other Versions: [ES6](https://github.com/minimill/project-template/tree/es6), [Minimill internal](https://github.com/minimill/project-template/tree/minimill)_
 
 ## Features
 
 - Install the project in just three commands (see "Developing" below).
-- Use [Handlebars.js][handlebars] to keep our HTML organized into templates and partials.
+- Use [React][react] with [React hot
+loader](https://github.com/gaearon/react-hot-boilerplate) to write our single-page app.
 - Use [SCSS][scss] to keep our CSS organized into logical components.
 - Use [Autoprefixer][autoprefixer] to automatically insert browser prefixes where necessary to handle cross browser compatibility.
 - Use [Browsersync][browsersync] to automatically launch a development version of our website, reload the page whenever we change the HTML, and inject changes to CSS, JavaScript, and images with needing to reload.
@@ -37,6 +38,11 @@ npm install -g gulp  # May require `sudo`
 npm install            # One time
 gem install scss_lint  # One time
 gulp serve
+```
+
+Webpack react server.
+```bash
+npm start
 ```
 
 ## Reminders
