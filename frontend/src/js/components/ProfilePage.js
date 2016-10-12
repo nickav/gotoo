@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import RowList from './Row';
 import Account from './Account';
 
@@ -9,9 +10,9 @@ export default class ProfilePage extends React.Component {
         <header>
           <nav className="content">
             <div className="row">
-              <a href="#" className="logo">
+              <Link to="/" className="logo">
                 <img src="/img/logo.svg" alt="Logo"/>
-              </a>
+              </Link>
               <Account name="Jeff Hilnbrand" handle="jhilmd" image="https://twitter.com/jhilmd/profile_image?size=normal" />
             </div>
           </nav>

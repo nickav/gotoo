@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class WelcomePage extends React.Component {
   render() {
@@ -10,10 +11,10 @@ export default class WelcomePage extends React.Component {
           </h1>
           <h2 className="tagline">Your go-to people for all things.</h2>
           <p className="subtitle">Reserve your page now.</p>
-          <a href="#" className="btn large">
+          <Link to="/nickaversano" className="btn large">
             <i className="icon"><img src="/img/twitter.svg" /></i>
             <span>Connect with Twitter</span>
-          </a>
+          </Link>
         </div>
       </div>
     );
