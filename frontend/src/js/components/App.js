@@ -1,9 +1,9 @@
-import React from 'react';
-import { Router, Route, Link, browserHistory } from 'react-router';
-import 'whatwg-fetch';
+import React from 'react'
+import { Router, Route, Link, browserHistory } from 'react-router'
+import 'whatwg-fetch'
 
-import WelcomePage from './WelcomePage';
-import ProfilePage from './ProfilePage';
+import WelcomePage from './WelcomePage'
+import ProfilePage from './ProfilePage'
 
 export default class App extends React.Component {
   render() {
@@ -12,6 +12,6 @@ export default class App extends React.Component {
         <Route path="/:userId" component={ProfilePage} />
         <Route path="/" component={WelcomePage} />
       </Router>
-    );
+    )
   }
 }

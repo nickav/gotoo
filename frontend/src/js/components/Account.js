@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default class Account extends React.Component {
   render() {
@@ -16,6 +16,6 @@ export default class Account extends React.Component {
         </div>
         <img src={this.props.image} />
       </div>
-    );
+    )
   }
 }

@@ -1,8 +1,8 @@
-import React from 'react';
-import { browserHistory } from 'react-router';
+import React from 'react'
+import { browserHistory } from 'react-router'
 
 export default class WelcomePage extends React.Component {
-  state = {};
+  state = {}
 
   componentDidMount() {
     // make sure to pass delicious cookies
@@ -10,10 +10,10 @@ export default class WelcomePage extends React.Component {
       .then(resp => resp.json()).then(json => {
       // logged in, redirect to profile
       if (json.current_user) {
-        browserHistory.push(json.current_user.profile_url);
+        browserHistory.push(json.current_user.profile_url)
       }
-      this.setState(json);
-    });
+      this.setState(json)
+    })
   }
 
   render() {
@@ -31,6 +31,6 @@ export default class WelcomePage extends React.Component {
           </a>
         </div>
       </div>
-    );
+    )
   }
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router';
-import Account from './Account';
+import React from 'react'
+import { Link } from 'react-router'
+import Account from './Account'
 
 export default class Header extends React.Component {
   render() {
@@ -19,6 +19,6 @@ export default class Header extends React.Component {
           </div>
         </nav>
       </header>
-    );
+    )
   }
 }

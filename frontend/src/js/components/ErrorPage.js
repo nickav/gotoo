@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React from 'react'
+import { Link } from 'react-router'
 
 export default class ErrorPage extends React.Component {
   _randomText() {
@@ -7,8 +7,8 @@ export default class ErrorPage extends React.Component {
       'Click your heels twice to go home.',
       'Have you tried turining it on and off again?',
       'Ever feel like you\'re in the wrong place?',
-    ];
-    return items[Math.floor(Math.random() * items.length)];
+    ]
+    return items[ Math.floor(Math.random() * items.length) ]
   }
 
   render() {
@@ -24,6 +24,6 @@ export default class ErrorPage extends React.Component {
           <p className="subtitle">{ this._randomText() }</p>
         </div>
       </div>
-    );
+    )
   }
 }
