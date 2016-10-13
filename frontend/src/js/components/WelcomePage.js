@@ -1,13 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 
 export default class WelcomePage extends React.Component {
   componentDidMount() {
-    fetch('/api').then((resp) => resp.json()).then((json) => {
-      console.log('json', json);
+    // make sure to pass delicious cookies
+    fetch('/api/current_user', { credentials: 'include' })
+      .then(resp => resp.json()).then(json => {
+      // logged in, redirect to profile
+      if (json.current_user) {
+        browserHistory.push(json.current_user.profile_url);
+      }
       this.setState(json);
     });
   }
+
+  _buttonLink() {
+    return this.state ? this.state.twitter_omniauth_url : '';
+  }
+
   render() {
     return (
       <div className="welcome-page">
@@ -17,10 +27,10 @@ export default class WelcomePage extends React.Component {
           </h1>
           <h2 className="tagline">Your go-to people for all things.</h2>
           <p className="subtitle">Reserve your page now.</p>
-          <Link to="/nickaversano" className="btn large">
+          <a href={ this._buttonLink() } className="btn large">
             <i className="icon"><img src="/img/twitter.svg" /></i>
             <span>Connect with Twitter</span>
-          </Link>
+          </a>
         </div>
       </div>
     );
