@@ -1,7 +1,7 @@
 import React from 'react';
 import Account from './Account';
 
-class Row extends React.Component {
+export class Row extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,12 +20,14 @@ class Row extends React.Component {
   }
 
   render() {
-    let className = 'row';
-    if (this.state.focus || this.props.skill.length == 0) className += ' editing';
+    let className = '';
+    if (this.state.focus || this.props.skill.length == 0) {
+      className += ' editing';
+    }
     return (
       <a target="_blank" className="row-link">
         <li
-          className={className}
+          className={'row' + className}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
         >
@@ -43,15 +45,8 @@ class Row extends React.Component {
 }
 
 export default class RowList extends React.Component {
-
   render() {
-    var rowList = [
-      {skill: "UI Design", handle: "jhilmd", name: "JAAAAFFFFF Hilnbrand", image: "https://twitter.com/jhilmd/profile_image?size=normal"},
-      {skill: "Apple Picking", handle: "jhilmd", name: "JAAAAFFFFF Hilnbrand", image: "https://twitter.com/jhilmd/profile_image?size=normal"},
-      {skill: "Piano Tuning", handle: "jhilmd", name: "JAAAAFFFFF Hilnbrand", image: "https://twitter.com/jhilmd/profile_image?size=normal"},
-      {skill: "", handle: "", name: "", image: ""}
-    ];
-    var rowNodes = rowList.map(function(e) {
+    var rowNodes = (this.props.data || []).map(function(e) {
       return (
         <Row {...e} />
       );

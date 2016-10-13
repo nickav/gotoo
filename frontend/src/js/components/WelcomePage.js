@@ -2,6 +2,8 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 
 export default class WelcomePage extends React.Component {
+  state = {};
+
   componentDidMount() {
     // make sure to pass delicious cookies
     fetch('/api/current_user', { credentials: 'include' })
@@ -14,10 +16,6 @@ export default class WelcomePage extends React.Component {
     });
   }
 
-  _buttonLink() {
-    return this.state ? this.state.twitter_omniauth_url : '';
-  }
-
   render() {
     return (
       <div className="welcome-page">
@@ -27,7 +25,7 @@ export default class WelcomePage extends React.Component {
           </h1>
           <h2 className="tagline">Your go-to people for all things.</h2>
           <p className="subtitle">Reserve your page now.</p>
-          <a href={ this._buttonLink() } className="btn large">
+          <a href={ this.state.twitter_omniauth_url } className="btn large">
             <i className="icon"><img src="/img/twitter.svg" /></i>
             <span>Connect with Twitter</span>
           </a>
