@@ -1,21 +1,19 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-export default class Account extends React.Component {
-  render() {
-    return (
-      <div className="profile">
-        <div className="user">
-          <span className="name">{this.props.name}</span>
-          <input
-            className="handle"
-            type="text"
-            placeholder="Add a Twitter handle..."
-            defaultValue={this.props.text}
-            tabIndex={this.props.tabindex}
-          />
-        </div>
-        <img src={this.props.image} />
-      </div>
-    )
-  }
-}
+const Account = ({ name, handle, image, tabIndex }) => (
+  <div className="profile">
+    <div className="user">
+      <span className="name">{ name }</span>
+      <input
+        className="handle"
+        type="text"
+        placeholder="Add a Twitter handle..."
+        defaultValue={ handle }
+        tabIndex={tabIndex}
+      />
+    </div>
+    <img src={ image } />
+  </div>
+)
+
+export default Account

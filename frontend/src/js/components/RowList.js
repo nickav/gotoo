@@ -44,19 +44,12 @@ export class Row extends React.Component {
   }
 }
 
-export default class RowList extends React.Component {
-  render() {
-    var rowNodes = (this.props.data || []).map(function(e) {
-      return <Row {...e} />
-    })
-    return (
-      <section className="profile people">
-        <div className="content">
-          <ul>
-            {rowNodes}
-          </ul>
-        </div>
-      </section>
-    )
-  }
-}
+export default ({data}) => (
+  <section className="profile people">
+    <div className="content">
+      <ul>
+        { (data || []).map(row => <Row {...row} />) }
+      </ul>
+    </div>
+  </section>
+)

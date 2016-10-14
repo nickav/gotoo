@@ -5,13 +5,11 @@ import 'whatwg-fetch'
 import WelcomePage from './WelcomePage'
 import ProfilePage from './ProfilePage'
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Router history={browserHistory}>
-        <Route path="/:userId" component={ProfilePage} />
-        <Route path="/" component={WelcomePage} />
-      </Router>
-    )
-  }
-}
+const App = () => (
+  <Router history={browserHistory}>
+    <Route path="/:userId" component={ProfilePage} />
+    <Route path="/" component={WelcomePage} />
+  </Router>
+)
+
+export default App
