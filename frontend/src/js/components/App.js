@@ -1,15 +1,23 @@
 import React from 'react'
 import { Router, Route, Link, browserHistory } from 'react-router'
-import 'whatwg-fetch'
-
+import { connect } from 'react-redux'
+import { fetchCurrentUser } from '../actions'
 import WelcomePage from './WelcomePage'
 import ProfilePage from './ProfilePage'
 
-const App = () => (
-  <Router history={browserHistory}>
-    <Route path="/:userId" component={ProfilePage} />
-    <Route path="/" component={WelcomePage} />
-  </Router>
-)
+class App extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(fetchCurrentUser())
+  }
 
-export default App
+  render() {
+    return (
+      <Router history={browserHistory}>
+        <Route path="/:userId" component={ProfilePage} />
+        <Route path="/" component={WelcomePage} />
+      </Router>
+    )
+  }
+}
+
+export default connect()(App)

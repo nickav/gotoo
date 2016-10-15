@@ -1,20 +1,16 @@
-import { combineReducers, createStore } from 'redux'
-import { ADD_GOTO } from './actions'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import reducer from './reducer'
 
-const gotos = (state = [], action) => {
-  switch (action.type) {
-    case ADD_GOTO:
-      return state.concat({
-        id: new Date().getTime(),
-        handle: '',
-        name: '',
-        skill: ''
-      })
-    default:
-      return state
-  }
-}
+const middleware = [ thunk ]
 
-export default createStore(combineReducers({
-  gotos
-}))
+const composeEnhancers =
+  (process.env.NODE_ENV !== 'production' && typeof window === 'object'
+    && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+  : compose
+
+export default createStore(
+  reducer,
+  composeEnhancers(applyMiddleware(...middleware))
+)
