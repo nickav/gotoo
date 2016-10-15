@@ -1,29 +1,18 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "Goto frontend",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "Your go-to people for all things.",
   "scripts": {
     "start": "node webpack.server.js",
     "lint": "eslint src",
     "dist": "gulp build:optimized"
   },
-  "keywords": [
-    "react",
-    "reactjs",
-    "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack"
-  ],
   "author": "Nick Aversano",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
+    "url": "https://github.com/nickaversano/goto/issues"
   },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
+  "homepage": "https://github.com/nickaversano/goto",
   "devDependencies": {
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",

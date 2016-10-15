@@ -34,13 +34,14 @@ npm install -g gulp  # May require `sudo`
 
 ## Developing
 
+Frontend CSS:
 ```bash
 npm install            # One time
 gem install scss_lint  # One time
 gulp serve
 ```
 
-Webpack react server.
+React:
 ```bash
 npm start
 ```
@@ -49,7 +50,7 @@ npm start
 
 If you want to use this repo for your next project, make sure to make the following changes:
 
-1. Edit `data.yml`, filling in the HTML metadata associated with your site.
+1. Edit `data.json`, filling in the HTML metadata associated with your site.
 2. Edit `package.json` providing a `name`, `version`, `description`, `license`, and `repository.url`.
 3. Remove the `.git` folder, so that you start from a fresh commit history.
 4. Edit `LICENSE.md` and `README.md` to your preference.
@@ -104,9 +105,8 @@ Runs `gulp watch` in the background, and serves the `dist` directory at `localho
 [handlebars]: http://handlebarsjs.com/
 [htmlmin]: https://github.com/kangax/html-minifier
 [imagemin]: https://github.com/imagemin/imagemin
-[jscs]: http://jscs.info/
-[jshint]: http://jshint.com/
 [linting]: https://en.wikipedia.org/wiki/Lint_%28software%29
+[react]: https://facebook.github.io/react/
 [npm-install]: https://nodejs.org/en/download/
 [uglifyjs]: https://github.com/mishoo/UglifyJS
 [scss]: http://sass-lang.com/
