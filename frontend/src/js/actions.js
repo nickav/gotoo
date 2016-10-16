@@ -30,9 +30,10 @@ export const fetchGotos = username => dispatch => {
   return $.get(`/api/users/${username}`)
     .then(json => {
       dispatch(receiveProfile(json))
-      if (json.gotos) {
-        dispatch(receiveGotos(json.gotos))
-      }
+      dispatch(receiveGotos(json.gotos))
+    })
+    .catch(err => {
+      dispatch(receiveProfile(err))
     })
 }
 
@@ -40,7 +41,6 @@ const createGoto = goto => (dispatch, getState) => {
   const user = getState().user
   return $.post(`/api/users/${user.id}/gotos`, { body: goto })
     .then(json => {
-      console.log(json)
     })
 }
 

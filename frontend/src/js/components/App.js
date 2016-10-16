@@ -2,8 +2,10 @@ import React from 'react'
 import { Router, Route, Link, browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { fetchCurrentUser } from '../actions'
+
 import WelcomePage from './WelcomePage'
 import ProfilePage from './ProfilePage'
+import ErrorPage from './ErrorPage'
 
 class App extends React.Component {
   componentDidMount() {

@@ -16,10 +16,28 @@ const defaultOptions = {
 /** Ensures JSON is a string. */
 const stringify = json => typeof json == 'string' ? json : JSON.stringify(json)
 
-/** fetch with JSON defaults (as specified in defaultOptions). */
+/**
+ * fetch with JSON defaults (as specified in defaultOptions).
+ * throws response on a non-200 status code
+ * e.g.
+    fetchJson('http://hello.world/api.json')
+      .then(result => {
+        console.log(result.status)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+ */
 export const fetchJson = (url, options) => {
   options = Object.assign({}, defaultOptions, options)
   return fetch(url, options)
+    .then(response => {
+      // forward response or throw error
+      if (response.status >= 200 && response.status < 300) {
+        return response
+      }
+      throw response
+    })
     .then(response => response.json())
 }
 
