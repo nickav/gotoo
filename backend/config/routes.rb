@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resources :users do
       resources :gotos
     end
-    get ':nickname' => 'users#show'
   end
 
   get '*path' => 'home#static_index'

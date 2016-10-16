@@ -1,12 +1,9 @@
 class UsersController < ApplicationController
-  before_action :find_user_by_nickname, only: [:show, :update, :destroy]
+  before_action :find_user_by_id_or_nickname, except: [:current, :index]
   before_action :current_user_can_edit!, only: [:update, :destroy]
 
   def current
-    render json: {
-      current_user: current_user,
-      twitter_omniauth_url: user_twitter_omniauth_authorize_url,
-    }
+    render json: current_user
   end
 
   def index
@@ -23,11 +20,5 @@ class UsersController < ApplicationController
 
   def destroy
     # TODO
-  end
-
-  private
-  def find_user_by_nickname
-    @user = User.find_by(nickname: params[:nickname])
-    raise ActionController::RoutingError.new('Not found') unless @user
   end
 end

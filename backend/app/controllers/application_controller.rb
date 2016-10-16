@@ -11,7 +11,21 @@ class ApplicationController < ActionController::API
   end
 
   protected
+
   def current_user_can_edit!
-    raise ActionController::RoutingError.new('Not Found') unless authenticate_user!.nickname == params[:nickname]
+    @user = find_user_by_id_or_nickname unless @user
+    raise ActionController::RoutingError.new('Not Found') unless authenticate_user!.id == @user.id
+  end
+
+  def find_user_by_id_or_nickname
+    id = params[:id] || params[:user_id]
+
+    if id.to_i.to_s == id
+      @user = User.find(id)
+    else
+      @user = User.find_by_nickname(id)
+    end
+
+    raise ActionController::RoutingError.new('User not found') unless @user
   end
 end

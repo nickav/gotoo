@@ -21,7 +21,7 @@ export class Row extends React.Component {
 
   render() {
     let className = ''
-    if (this.state.focus || this.props.skill.length == 0) {
+    if (this.state.focus || (this.props.skill && this.props.skill.length == 0)) {
       className += ' editing'
     }
     return (
@@ -33,7 +33,7 @@ export class Row extends React.Component {
         >
           <input type="text"
             ref="skill"
-            className="craft"
+            className="skill craft"
             placeholder="Write a skill..."
             defaultValue={this.props.skill}
           />
@@ -44,11 +44,11 @@ export class Row extends React.Component {
   }
 }
 
-export default ({data}) => (
+export default ({items}) => (
   <section className="profile people">
     <div className="content">
       <ul>
-        { (data || []).map(row => <Row {...row} />) }
+        { (items || []).map(row => <Row key={row.id} {...row} />) }
       </ul>
     </div>
   </section>

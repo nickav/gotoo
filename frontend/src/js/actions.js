@@ -7,9 +7,11 @@ export const RECEIVE_PROFILE = 'RECEIVE_PROFILE'
 
 export const addGoto = (skill, handle) => ({
   type: ADD_GOTO,
-  id: new Date().getTime(),
-  skill,
-  handle
+  goto: {
+    id: new Date().getTime(),
+    skill,
+    handle
+  }
 })
 
 const receiveGotos = (gotos) => ({
@@ -24,8 +26,8 @@ const receiveProfile = (profile) => ({
   receivedAt: Date.now()
 })
 
-export const fetchGotos = username => dispatch => {
-  return fetch(`/api/${username}`)
+export const fetchGotos = (username) => dispatch => {
+  return fetch(`/api/users/${username}`)
     .then(response => response.json())
     .then(json => {
       dispatch(receiveProfile(json))
@@ -33,6 +35,10 @@ export const fetchGotos = username => dispatch => {
         dispatch(receiveGotos(json.gotos))
       }
     })
+}
+
+export const updateGoto = (goto) => dispatch => {
+
 }
 
 export const fetchCurrentUser = () => dispatch => {

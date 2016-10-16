@@ -12,6 +12,9 @@ class ProfilePage extends React.Component {
     this.props.dispatch(fetchGotos(username))
   }
 
+  componentWillReceiveProps(nextProps) {
+  }
+
   render() {
     if (this.props.status != 200) {
       return <ErrorPage status={this.props.status} />
@@ -20,7 +23,7 @@ class ProfilePage extends React.Component {
     return (
       <div className="profile-page">
         <Header {...this.props.profile} />
-        <RowList data={this.props.gotos} />
+        <RowList items={this.props.gotos} />
       </div>
     )
   }
@@ -28,6 +31,7 @@ class ProfilePage extends React.Component {
 
 const propsMap = state => {
   return {
+    editable: state.user.id == state.profile.id,
     gotos: state.gotos,
     profile: state.profile,
     status: state.profile.status || 200,
