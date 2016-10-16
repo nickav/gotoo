@@ -71,11 +71,17 @@ header {
 }
 
 .row-link {
+  position: relative;
   display: block;
   margin-bottom: 1rem;
 
+  .remove {
+    position: absolute;
+    right: -4rem;
+  }
+
   &:hover, .editing {
-    .craft {
+    .skill {
       color: $black;
     }
     .user {
@@ -104,8 +110,12 @@ header {
   justify-content: space-between;
 }
 
-.craft {
+.skill {
   transition: color $transition-duration;
+}
+
+.x {
+  cursor: pointer;
 }
 
 .profile {

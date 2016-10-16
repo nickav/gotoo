@@ -26,10 +26,9 @@ const receiveProfile = (profile) => ({
   receivedAt: Date.now()
 })
 
-export const fetchGotos = (username) => dispatch => {
+export const fetchGotos = username => dispatch => {
   return $.get(`/api/users/${username}`)
     .then(json => {
-      console.log(json)
       dispatch(receiveProfile(json))
       if (json.gotos) {
         dispatch(receiveGotos(json.gotos))
@@ -37,30 +36,32 @@ export const fetchGotos = (username) => dispatch => {
     })
 }
 
-const createGoto = (user_id, goto) => dispatch => {
-  return $.post(`/api/users/${user_id}/gotos`, { body: goto })
+const createGoto = goto => (dispatch, getState) => {
+  const user = getState().user
+  return $.post(`/api/users/${user.id}/gotos`, { body: goto })
     .then(json => {
       console.log(json)
     })
 }
 
-const updateGoto = (user_id, goto) => dispatch => {
-  return $.put(`/api/users/${user_id}/gotos/${goto.id}`, { body: goto })
+const updateGoto = goto => (dispatch, getState) => {
+  const user = getState().user
+  return $.put(`/api/users/${user.id}/gotos/${goto.id}`, { body: goto })
     .then(json => {
       console.log(json)
     })
 }
 
-export const saveGoto = (user_id, goto) => dispatch => {
-  if (goto.id) {
-    return updateGoto(user_id, goto)
+export const saveGoto = goto => {
+  if (goto.created_at) {
+    return updateGoto(goto)
   }
-  return createGoto(user_id, goto)
+  return createGoto(goto)
 }
-window.saveGoto = saveGoto
 
-export const deleteGoto = (user_id, goto) => dispatch => {
-  return $.delete(`/api/users/${user_id}/gotos/${goto.id}`)
+export const deleteGoto = goto => (dispatch, getState) => {
+  const user = getState().user
+  return $.delete(`/api/users/${user.id}/gotos/${goto.id}`)
     .then(json => {
       console.log(json)
     })

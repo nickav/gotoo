@@ -20,7 +20,7 @@ class GotosController < ApplicationController
   end
 
   def destroy
-    @goto.delete!
+    @goto.destroy!
     @user.save!
     render json: @user.gotos
   end

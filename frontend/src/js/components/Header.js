@@ -10,9 +10,10 @@ const Header = ({name, handle, image}) => (
           <img src="/img/logo.svg" alt="Goto"/>
         </Link>
         <Account
-          name={ name }
-          handle={ handle }
-          image={ image }
+          name={name}
+          handle={handle}
+          image={image}
+          tabIndex="-1"
         />
       </div>
     </nav>

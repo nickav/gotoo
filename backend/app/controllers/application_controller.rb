@@ -18,7 +18,7 @@ class ApplicationController < ActionController::API
   end
 
   def find_user_by_id_or_nickname
-    id = params[:id] || params[:user_id]
+    id = params[:user_id] || params[:id]
 
     if id.to_i.to_s == id
       @user = User.find(id)

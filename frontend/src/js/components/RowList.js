@@ -1,22 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Account from './Account'
+import { deleteGoto } from '../actions'
 
-export class Row extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      focus: false
-    }
-    this.onBlur = this.onBlur.bind(this)
-    this.onFocus = this.onFocus.bind(this)
+class Row extends React.Component {
+  state = {
+    focus: false
   }
 
-  onFocus() {
+  onFocus = () => {
     this.setState({focus: true})
   }
 
-  onBlur() {
+  onBlur = () => {
     this.setState({focus: false})
+  }
+
+  onClick = () => {
+    this.props.dispatch(deleteGoto({id: this.props.id}))
   }
 
   render() {
@@ -38,17 +39,20 @@ export class Row extends React.Component {
             defaultValue={this.props.skill}
           />
           <Account handle={this.props.nickname} {...this.props} />
+          <div className="remove x" onClick={this.onClick}>x</div>
         </li>
       </a>
     )
   }
 }
 
+const ConnectedRow = connect()(Row)
+
 export default ({items}) => (
   <section className="profile people">
     <div className="content">
       <ul>
-        { (items || []).map(row => <Row key={row.id} {...row} />) }
+        { items.map(row => <ConnectedRow key={row.id} {...row} />) }
       </ul>
     </div>
   </section>
