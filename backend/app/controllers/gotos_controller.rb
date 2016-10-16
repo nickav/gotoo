@@ -1,5 +1,5 @@
 class GotosController < ApplicationController
-  before_action :find_goto, except: [:index]
+  before_action :find_goto, except: [:index, :create]
   before_action :find_user_by_id_or_nickname
   before_action :current_user_can_edit!, only: [:create, :update, :destroy]
 
@@ -8,19 +8,20 @@ class GotosController < ApplicationController
   end
 
   def create
-    @user.gotos.create(goto_params)
+    @user.gotos.create!(goto_params)
+    @user.save!
     render json: @user.gotos
   end
 
   def update
-    @goto.update(goto_params)
-    @user.save
+    @goto.update!(goto_params)
+    @user.save!
     render json: @user.gotos
   end
 
   def destroy
-    @goto.delete
-    @user.save
+    @goto.delete!
+    @user.save!
     render json: @user.gotos
   end
 
@@ -31,6 +32,6 @@ class GotosController < ApplicationController
   end
 
   def goto_params
-    params.require(:nickname, :skill).permit(:image, :name)
+    params.require(:goto).permit(:nickname, :skill, :image, :name)
   end
 end

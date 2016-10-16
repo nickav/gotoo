@@ -16,10 +16,6 @@ class ProfilePage extends React.Component {
   }
 
   render() {
-    if (this.props.status != 200) {
-      return <ErrorPage status={this.props.status} />
-    }
-
     return (
       <div className="profile-page">
         <Header {...this.props.profile} />
@@ -29,13 +25,10 @@ class ProfilePage extends React.Component {
   }
 }
 
-const propsMap = state => {
-  return {
-    editable: state.user.id == state.profile.id,
-    gotos: state.gotos,
-    profile: state.profile,
-    status: state.profile.status || 200,
-  }
-}
+const props = state => ({
+  editable: state.user.id == state.profile.id,
+  gotos: state.gotos,
+  profile: state.profile,
+})
 
-export default connect(propsMap)(ProfilePage)
+export default connect(props)(ProfilePage)

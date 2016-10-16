@@ -8,7 +8,7 @@ const Account = ({ name, handle, image, tabIndex }) => (
         className="handle"
         type="text"
         placeholder="Add a Twitter handle..."
-        defaultValue={ handle }
+        defaultValue={handle}
         tabIndex={tabIndex}
       />
     </div>

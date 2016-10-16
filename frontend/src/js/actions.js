@@ -1,4 +1,4 @@
-import 'whatwg-fetch'
+import $ from './http'
 
 export const ADD_GOTO = 'ADD_GOTO'
 export const RECEIVE_GOTOS = 'RECEIVE_GOTOS'
@@ -27,9 +27,9 @@ const receiveProfile = (profile) => ({
 })
 
 export const fetchGotos = (username) => dispatch => {
-  return fetch(`/api/users/${username}`)
-    .then(response => response.json())
+  return $.get(`/api/users/${username}`)
     .then(json => {
+      console.log(json)
       dispatch(receiveProfile(json))
       if (json.gotos) {
         dispatch(receiveGotos(json.gotos))
@@ -37,14 +37,38 @@ export const fetchGotos = (username) => dispatch => {
     })
 }
 
-export const updateGoto = (goto) => dispatch => {
+const createGoto = (user_id, goto) => dispatch => {
+  return $.post(`/api/users/${user_id}/gotos`, { body: goto })
+    .then(json => {
+      console.log(json)
+    })
+}
 
+const updateGoto = (user_id, goto) => dispatch => {
+  return $.put(`/api/users/${user_id}/gotos/${goto.id}`, { body: goto })
+    .then(json => {
+      console.log(json)
+    })
+}
+
+export const saveGoto = (user_id, goto) => dispatch => {
+  if (goto.id) {
+    return updateGoto(user_id, goto)
+  }
+  return createGoto(user_id, goto)
+}
+window.saveGoto = saveGoto
+
+export const deleteGoto = (user_id, goto) => dispatch => {
+  return $.delete(`/api/users/${user_id}/gotos/${goto.id}`)
+    .then(json => {
+      console.log(json)
+    })
 }
 
 export const fetchCurrentUser = () => dispatch => {
   // make sure to pass delicious cookies
-  return fetch('/api/current_user', { credentials: 'include' })
-    .then(resp => resp.json())
+  return $.get('/api/current_user')
     .then(json => dispatch({
         type: RECEIVE_USER,
         user: json

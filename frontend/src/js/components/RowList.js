@@ -37,7 +37,7 @@ export class Row extends React.Component {
             placeholder="Write a skill..."
             defaultValue={this.props.skill}
           />
-          <Account {...this.props} />
+          <Account handle={this.props.nickname} {...this.props} />
         </li>
       </a>
     )

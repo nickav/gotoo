@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
   protected
 
   def current_user_can_edit!
-    @user = find_user_by_id_or_nickname unless @user
+    @user = find_user_by_id_or_nickname unless @user.present?
     raise ActionController::RoutingError.new('Not Found') unless authenticate_user!.id == @user.id
   end
 
