@@ -51,6 +51,7 @@ const createGoto = goto => (dispatch, getState) => {
   const user = getState().user
   return $.post(`/api/users/${user.id}/gotos`, { body: goto })
     .then(json => {
+      dispatch(receiveGotos(json))
     })
 }
 
@@ -58,7 +59,7 @@ const updateGoto = goto => (dispatch, getState) => {
   const user = getState().user
   return $.put(`/api/users/${user.id}/gotos/${goto.id}`, { body: goto })
     .then(json => {
-      console.log(json)
+      dispatch(receiveGotos(json))
     })
 }
 

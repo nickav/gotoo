@@ -14,7 +14,12 @@ class Goto extends React.Component {
 
   onBlur = () => {
     this.setState({focus: false})
-    this.onSubmit()
+    // debounce in case we're tabbing between inputs
+    setTimeout(() => {
+      if (!this.state.focus) {
+        this.onSubmit()
+      }
+    }, 0)
   }
 
   delete = () => {
@@ -53,7 +58,7 @@ class Goto extends React.Component {
 
   render() {
     let className = ''
-    if (this.state.focus || (this.props.skill && this.props.skill.length == 0)) {
+    if (this.state.focus) {
       className += ' editing'
     }
     return (
