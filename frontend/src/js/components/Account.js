@@ -1,18 +1,12 @@
 import React, { PropTypes } from 'react'
 
-const Account = ({ name, handle, image, tabIndex }) => (
+const Account = ({ name, handle, image }) => (
   <div className="profile">
     <div className="user">
-      <span className="name">{ name }</span>
-      <input
-        className="handle"
-        type="text"
-        placeholder="Add a Twitter handle..."
-        defaultValue={handle}
-        tabIndex={tabIndex}
-      />
+      <span className="name">{name}</span>
+      <span className="handle">{handle}</span>
     </div>
-    <img src={ image } />
+    <img src={image} />
   </div>
 )
 

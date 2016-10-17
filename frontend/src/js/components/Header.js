@@ -13,7 +13,6 @@ const Header = ({name, handle, image}) => (
           name={name}
           handle={handle}
           image={image}
-          tabIndex="-1"
         />
       </div>
     </nav>

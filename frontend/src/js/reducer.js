@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   ADD_GOTO,
+  EDIT_GOTO,
   RECEIVE_GOTOS,
   RECEIVE_USER,
   RECEIVE_PROFILE
@@ -12,6 +13,14 @@ const gotos = (state = [], action) => {
       return state.concat(action.goto)
     case RECEIVE_GOTOS:
       return action.gotos
+    case EDIT_GOTO:
+      const edits = action.goto
+      return state.map(goto => {
+        if (goto.id == edits.id) {
+          return Object.assign({}, goto, edits)
+        }
+        return goto
+      })
     default:
       return state
   }
