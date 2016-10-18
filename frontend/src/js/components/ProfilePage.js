@@ -20,7 +20,6 @@ class ProfilePage extends React.Component {
       <div className="profile-page">
         <Header {...this.props.profile} />
         <GotoList items={this.props.gotos} />
-        <GotoList items={[{id: -1, skill: '', nickname: '', name: '', image: ''}]} />
       </div>
     )
   }

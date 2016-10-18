@@ -1,4 +1,4 @@
-import $ from './http'
+import $ from './dollar'
 
 export const ADD_GOTO = 'ADD_GOTO'
 export const EDIT_GOTO = 'EDIT_GOTO'
@@ -36,11 +36,20 @@ const receiveProfile = (profile) => ({
   receivedAt: Date.now()
 })
 
-export const fetchGotos = username => dispatch => {
+const addBlankGotoIfNeeded = (dispatch, getState) => {
+  const state = getState()
+  const lastGoto = state.gotos[state.gotos.length - 1]
+  if (!lastGoto || lastGoto.created_at) {
+    dispatch(addGoto())
+  }
+}
+
+export const fetchGotos = username => (dispatch, getState) => {
   return $.get(`/api/users/${username}`)
     .then(json => {
       dispatch(receiveProfile(json))
       dispatch(receiveGotos(json.gotos))
+      addBlankGotoIfNeeded(dispatch, getState)
     })
     .catch(err => {
       dispatch(receiveProfile(err))
@@ -49,9 +58,12 @@ export const fetchGotos = username => dispatch => {
 
 const createGoto = goto => (dispatch, getState) => {
   const user = getState().user
+  // creating new goto, add another blank one
+  dispatch(addGoto())
   return $.post(`/api/users/${user.id}/gotos`, { body: goto })
     .then(json => {
       dispatch(receiveGotos(json))
+      addBlankGotoIfNeeded(dispatch, getState)
     })
 }
 
@@ -60,6 +72,7 @@ const updateGoto = goto => (dispatch, getState) => {
   return $.put(`/api/users/${user.id}/gotos/${goto.id}`, { body: goto })
     .then(json => {
       dispatch(receiveGotos(json))
+      addBlankGotoIfNeeded(dispatch, getState)
     })
 }
 
@@ -74,7 +87,8 @@ export const deleteGoto = goto => (dispatch, getState) => {
   const user = getState().user
   return $.delete(`/api/users/${user.id}/gotos/${goto.id}`)
     .then(json => {
-      console.log(json)
+      dispatch(receiveGotos(json))
+      addBlankGotoIfNeeded(dispatch, getState)
     })
 }
 

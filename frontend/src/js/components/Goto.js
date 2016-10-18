@@ -57,6 +57,11 @@ class Goto extends React.Component {
   }
 
   render() {
+    // hide blank goto on other people's pages
+    if (!this.props.editable && !this.props.created_at) {
+      return null
+    }
+
     let className = ''
     if (this.state.focus) {
       className += ' editing'
@@ -77,6 +82,7 @@ class Goto extends React.Component {
             value={this.props.skill}
             onChange={this.editAttribute('skill')}
             disabled={!this.props.editable}
+            autoFocus={!this.props.created_at}
           />
           <div className="profile">
             <div className="user">
