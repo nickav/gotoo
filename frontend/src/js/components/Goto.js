@@ -52,6 +52,9 @@ class Goto extends React.Component {
     if (!this.props.editable || !this.state.dirty) {
       return
     }
+    if (!this.props.skill.length || !this.props.nickname.length) {
+      return
+    }
     this.props.dispatch(saveGoto(this.props))
     this.setState({dirty: false})
   }
