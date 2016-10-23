@@ -2,6 +2,7 @@ import $ from './dollar'
 
 export const ADD_GOTO = 'ADD_GOTO'
 export const EDIT_GOTO = 'EDIT_GOTO'
+export const DELETE_GOTO = 'EDIT_GOTO'
 export const RECEIVE_GOTOS = 'RECEIVE_GOTOS'
 export const RECEIVE_USER = 'RECEIVE_USER'
 export const RECEIVE_PROFILE = 'RECEIVE_PROFILE'

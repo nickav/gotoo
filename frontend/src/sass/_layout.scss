@@ -133,6 +133,10 @@ header {
     border-radius: 50%;
     transition: transform $transition-duration ease;
   }
+
+  input {
+    text-align: right;
+  }
 }
 
 .user {

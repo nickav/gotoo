@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Goto from './Goto'
 
 export default ({items}) => (
-  <section className="profile people">
+  <section className="people">
     <div className="content">
       <ul>
         { items.map(row => <Goto key={row.id} {...row} />) }

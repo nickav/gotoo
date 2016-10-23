@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import {
   ADD_GOTO,
   EDIT_GOTO,
+  DELETE_GOTO,
   RECEIVE_GOTOS,
   RECEIVE_USER,
   RECEIVE_PROFILE
@@ -20,6 +21,11 @@ const gotos = (state = [], action) => {
           return Object.assign({}, goto, edits)
         }
         return goto
+      })
+    case DELETE_GOTO:
+      const remove = action.goto
+      return state.filter(goto => {
+        return goto.id != remove.id
       })
     default:
       return state

@@ -21,12 +21,6 @@ nick.gotos.create(name: "Noga Raviv",
   image: "http://pbs.twimg.com/profile_images/785962035754381313/9vY2dIAm_normal.jpg"
 )
 
-nick.gotos.create(name: "Noga Raviv",
-  nickname: "nogaraviv",
-  skill: "googly eyes",
-  image: "http://pbs.twimg.com/profile_images/785962035754381313/9vY2dIAm_normal.jpg"
-)
-
 nick.gotos.create(name: "Robert Cobb",
   nickname: "robcobbable",
   skill: "stuff",
