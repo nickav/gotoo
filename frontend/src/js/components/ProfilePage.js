@@ -18,7 +18,7 @@ class ProfilePage extends React.Component {
   render() {
     return (
       <div className="profile-page">
-        <Header {...this.props.profile} />
+        <Header {...this.props.profile} link={'/' + this.props.user.nickname} />
         <GotoList items={this.props.gotos} />
       </div>
     )
@@ -28,6 +28,7 @@ class ProfilePage extends React.Component {
 const props = state => ({
   gotos: state.gotos,
   profile: state.profile,
+  user: state.user,
 })
 
 export default connect(props)(ProfilePage)

@@ -166,3 +166,7 @@ header {
 section.people {
   padding-bottom: 6rem;
 }
+
+img:not([src]) {
+  visibility: hidden;
+}
