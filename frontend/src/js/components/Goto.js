@@ -70,7 +70,7 @@ class Goto extends React.Component {
       className += ' editing'
     }
     return (
-      <a target="_blank" className="row-link" href={!this.props.editable ? '' : this.props.twitter_profile_url}>
+      <a target="_blank" className="row-link" href={this.props.editable ? '' : this.props.twitter_profile_url}>
         <li
           className={'goto' + className}
           onFocus={this.onFocus}
