@@ -85,7 +85,7 @@ class Goto extends React.Component {
             value={this.props.skill}
             onChange={this.editAttribute('skill')}
             disabled={!this.props.editable}
-            autoFocus={!this.props.created_at}
+            autoFocus={false && !this.props.created_at}
           />
           <div className="profile">
             <div className="user">
@@ -102,7 +102,7 @@ class Goto extends React.Component {
             <img src={this.props.image} />
           </div>
           {this.props.editable && this.props.created_at ?
-            <div className="remove x" onClick={this.delete}>x</div>
+            <div className="remove x" onClick={this.delete}>✕</div>
             : null
           }
         </form>
