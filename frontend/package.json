@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node webpack.server.js",
     "lint": "eslint src",
-    "dist": "gulp build:optimized"
+    "dist": "gulp build:optimized && NODE_ENV=production webpack --progress -p --config webpack.production.config.js"
   },
   "author": "Nick Aversano",
   "license": "MIT",
