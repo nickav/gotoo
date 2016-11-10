@@ -6,7 +6,7 @@ const Header = ({name, handle, image, link}) => (
   <header>
     <nav className="content">
       <div className="row">
-        <Link to={link} className="logo">
+        <Link to={link || '/'} className="logo">
           <img src="/img/logo.svg" alt="Goto"/>
         </Link>
         <Account
